@@ -137,10 +137,15 @@ export async function deleteUserAsync(id: string): Promise<void> {
   saveUsers(users);
   if (isSupabaseConfigured() && supabase) {
     try {
+      // Delete dependent transactions first to avoid FK constraints
+      const { error: txError } = await supabase.from('transactions').delete().eq('userId', id);
+      if (txError) console.error('Gagal menghapus transaksi terkait:', txError);
+
       const { error } = await supabase.from('users').delete().eq('id', id);
       if (error) throw error;
     } catch (err) {
       console.error('Gagal menghapus user dari Supabase:', err);
+      throw err; // Re-throw to allow UI to handle error
     }
   }
 }

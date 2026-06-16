@@ -132,6 +132,7 @@ export default function ManajemenPengguna({ users, onUpdateUsers, currentUser }:
   const confirmDeleteUser = async () => {
     if (!userToDelete) return;
     const id = userToDelete.id;
+    const originalUsers = [...users];
 
     const filtered = users.filter(u => u.id !== id);
     onUpdateUsers(filtered);
@@ -139,6 +140,9 @@ export default function ManajemenPengguna({ users, onUpdateUsers, currentUser }:
       await deleteUserAsync(id);
     } catch (err) {
       console.error("Gagal menghapus ke Supabase:", err);
+      // Restore user if deletion failed
+      onUpdateUsers(originalUsers);
+      alert('Gagal menghapus akun secara permanen. Mohon coba lagi.');
     }
     setUserToDelete(null);
   };
