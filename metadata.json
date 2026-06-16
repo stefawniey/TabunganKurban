@@ -1,0 +1,6 @@
+{
+  "name": "Tabungan Kurban",
+  "description": "Aplikasi tabungan kurban digital sekolah modern dengan dukungan multi-role (Admin, Guru, Siswa), visualisasi interaktif, dan laporan tabungan digital.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
