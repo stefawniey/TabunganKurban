@@ -209,7 +209,7 @@ export default function LandingPage({ onNavigate, currentUser }: LandingPageProp
                   <span className="text-[10px] text-zinc-650 font-mono font-bold bg-zinc-100 px-2.5 py-1 rounded border border-zinc-200">DATA TERKINI</span>
                 </div>
                 <h3 className="text-xs font-semibold text-zinc-500 tracking-wider uppercase font-mono">Total Dana Terhimpun</h3>
-                <p className="text-2xl md:text-3xl font-extrabold text-zinc-900 mt-2 font-mono tracking-tight">
+                <p className="text-xl md:text-2xl font-extrabold text-zinc-900 mt-2 font-mono tracking-tight">
                   {loading ? '---' : (totalTabungan > 0 ? formatRupiah(totalTabungan) : '-')}
                 </p>
               </div>
